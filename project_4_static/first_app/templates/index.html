@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<table class="table container">
+    <thead>
+        <tr>
+            <th scope="col">UserID</th>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+        <tr>
+            <th scope="row">{{ i.userId }}</th>
+            <td>{{ i.id }}</td>
+            <td>{{ i.title | title }}</td>
+            <td>{{ i.body | truncatewords:5 }} </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<img src="{% static 'Images/image2.avif' %}" alt="Image" class="container fluid-img">
+
+{% endblock %}
