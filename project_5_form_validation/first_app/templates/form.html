@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="container" method="post" action="{% url 'aboutPage' %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="exampleInputNaim">Name </label>
+        <input type="text" class="form-control" id="exampleInputNaim" aria-describedby="namelHelp" name="userName">
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Example select</label>
+        <select class="form-control" id="exampleFormControlSelect1" name ="select">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
