@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="banner container d-flex justify-content-center mt-5" style="display: flex; gap:10px;">
+
+{% for post in data%}
+
+<div class="card" style="width: 250px; border:2px solid green">
+    <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{post.content | truncatewords:10 }} </p>
+        <small>Author : {{post.author}}</small>
+        <small> <span style="color: rgb(220, 176, 29);">Category :</span>
+            {% for cat in post.category.all %}
+              <button class="btn btn-primary m-2 btn-sm " disabled>{{cat }} 
+              </button>
+            {%endfor %}
+        </small>
+        <a href="{% url 'editPost' post.id %}" class="btn btn-warning btn-sm">Edit</a>
+        <a href="{% url 'deletePost' post.id %}" class="btn btn-danger btn-sm ">Delete</a>
+    </div>
+</div>
+
+{% endfor %}
+</div>
+{% endblock %}
