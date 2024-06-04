@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table class="table table-hover container">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Instrument Type</th>
+            <th scope="col">Album Name </th>
+            <th scope="col">Relese date</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in form %}
+        <tr>
+            <th scope="row">{{item.id }} </th>
+            <td>
+                <a href="{% url 'edit' item.id %}">{{ item.musician.firstName }} {{item.musician.lastName }}</a>
+            </td>
+            <td>{{ item.musician.email }} </td>
+            <td>{{ item.rating }} </td>
+            <td>{{ item.musician.instrumetType }} </td>
+            <td>{{ item.name}} </td>
+            <td>{{ item.releseDate}} </td>
+            <td>
+                <a href="{% url 'editAlbum' item.id %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'deleteAlbum' item.id %}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
